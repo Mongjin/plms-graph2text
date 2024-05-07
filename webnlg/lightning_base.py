@@ -6,7 +6,8 @@ from typing import Any, Dict
 import sys
 import pytorch_lightning as pl
 from pytorch_lightning.utilities import rank_zero_info
-from pytorch_lightning.callbacks import LearningRateLogger
+# from pytorch_lightning.callbacks import LearningRateLogger
+from pytorch_lightning.callbacks import LearningRateMonitor
 
 from transformers import (
     AdamW,
@@ -393,7 +394,7 @@ def generic_train(
 
     train_params["accumulate_grad_batches"] = args.accumulate_grad_batches
 
-    lr_logger = LearningRateLogger(logging_interval='step')
+    lr_logger = LearningRateMonitor(logging_interval='step')
 
     #         deterministic=True,
     trainer = pl.Trainer.from_argparse_args(
