@@ -400,10 +400,11 @@ def generic_train(
     trainer = pl.Trainer.from_argparse_args(
         args,
         enable_model_summary='full',
-        callbacks=[logging_callback, lr_logger],
+        # callbacks=[logging_callback, lr_logger],
+        callbacks=[early_stopping_callback, checkpoint_callback],
         logger=logger,
-        checkpoint_callback=checkpoint_callback,
-        early_stop_callback=early_stopping_callback,
+        # checkpoint_callback=checkpoint_callback,
+        # early_stop_callback=early_stopping_callback,
         num_sanity_val_steps=4,
         **train_params,
     )
