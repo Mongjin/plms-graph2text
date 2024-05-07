@@ -399,7 +399,7 @@ def generic_train(
     #         deterministic=True,
     trainer = pl.Trainer.from_argparse_args(
         args,
-        weights_summary='full',
+        enable_model_summary='full',
         callbacks=[logging_callback, lr_logger],
         logger=logger,
         checkpoint_callback=checkpoint_callback,
