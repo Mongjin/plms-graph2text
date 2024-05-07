@@ -538,7 +538,7 @@ class Graph2TextModule(SummarizationModule):
     def __init__(self, hparams, **kwargs):
         super().__init__(hparams, **kwargs)
 
-        self.hparams.update(hparams)
+        self.save_hyperparameters(hparams)
 
         rank_zero_info("parameters %s", hparams)
 
